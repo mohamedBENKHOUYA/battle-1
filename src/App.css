@@ -1,0 +1,75 @@
+.badge-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+}
+
+
+.badge {
+  border: 1px solid blue;
+}
+
+
+
+.players-container {
+  /* border: solid red; */
+  width: 400px;
+  height: 400px;
+  position: relative;
+
+  animation-name: rotation-forward;
+  animation-duration: 10s;
+  /* animation-iteration-count: infinite; */
+  animation-timing-function: cubic-bezier(.8,1.76,.87,.94);
+}
+
+.players-container .player {
+  border-radius: 50%;
+  overflow: hidden;
+  border: solid blue;
+  position: absolute;
+  inset: 0;
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  
+  transform-origin: 200px 50% 0;
+  transform: translateX(-150px) rotateZ(calc(calc(360deg / 6) * var(--i)))
+}
+
+.players-container .player-image {
+  /* border: solid blue; */
+  position: absolute;
+  inset: 0;
+  transform: rotateZ(calc(calc(-360deg / 6) * var(--i)));
+  width: 100%;
+  height: 100%;
+
+}
+.players-container .player-image  img {
+  width: 100%;
+  height: 100%;
+  object-position: 50% 50%;
+  object-fit: cover;
+  /* animation-name: rotation-toward; */
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+
+@keyframes rotation-forward {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+@keyframes rotation-toward {
+  0% {
+    transform: rotateZ(360deg);
+  }
+  100% {
+    transform: rotateZ(0deg);
+  }
+}
